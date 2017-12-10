@@ -116,5 +116,7 @@ You can write it in any language you like. You can use any libraries/frameworks/
   }
 ]
 
+### Source code
+Please use latest VS2017 to open solution.
 ### Deployed site on Azure
 http://aspnetcoremvcappdemo.azurewebsites.net/
