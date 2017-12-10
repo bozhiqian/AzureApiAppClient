@@ -115,3 +115,6 @@ You can write it in any language you like. You can use any libraries/frameworks/
     ]
   }
 ]
+
+### Deployed site on Azure
+http://aspnetcoremvcappdemo.azurewebsites.net/
