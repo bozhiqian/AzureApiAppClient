@@ -11,6 +11,10 @@ namespace AspNetCoreMvcAppDemo.Infrastructure
 {
     public class PetsRepository : IPetsRepository
     {
+        public PetsRepository()
+        {
+            
+        }
         public async Task<List<PetOwner>> GetPetOwnerAsync(string baseUrl, string requestUri)
         {
             try
@@ -34,6 +38,10 @@ namespace AspNetCoreMvcAppDemo.Infrastructure
             }
             catch(Exception ex)
             {
+                // loging...
+
+                // Rethrow.
+                throw ex;
             }
             return new List<PetOwner>();
         }

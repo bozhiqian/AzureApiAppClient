@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27130.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCoreMvcAppDemo", "AspNetCoreMvcAppDemo\AspNetCoreMvcAppDemo.csproj", "{30505A3D-37E2-4D33-B4AB-63F9E192F1E9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCoreMvcAppDemo.Test", "AspNetCoreMvcAppDemo.Test\AspNetCoreMvcAppDemo.Test.csproj", "{20AC81D1-0677-4E4F-8D9C-36DAEBF61849}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{30505A3D-37E2-4D33-B4AB-63F9E192F1E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30505A3D-37E2-4D33-B4AB-63F9E192F1E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30505A3D-37E2-4D33-B4AB-63F9E192F1E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20AC81D1-0677-4E4F-8D9C-36DAEBF61849}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20AC81D1-0677-4E4F-8D9C-36DAEBF61849}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20AC81D1-0677-4E4F-8D9C-36DAEBF61849}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20AC81D1-0677-4E4F-8D9C-36DAEBF61849}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
