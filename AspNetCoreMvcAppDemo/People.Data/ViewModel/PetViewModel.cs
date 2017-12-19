@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using People.Data.Entities;
 
 namespace People.Data.ViewModel
 {
