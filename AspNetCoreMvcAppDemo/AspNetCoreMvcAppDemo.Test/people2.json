@@ -1,0 +1,148 @@
+﻿{
+  "petsFromMaleOwner": [
+    {
+      "petId": 7,
+      "name": "Fido",
+      "petType": "Dog",
+      "people": [
+        {
+          "personId": 1,
+          "name": "Bob",
+          "gender": "Male",
+          "age": 23
+        }
+      ]
+    },
+    {
+      "petId": 1,
+      "name": "Garfield",
+      "petType": "Cat",
+      "people": [
+        {
+          "personId": 1,
+          "name": "Bob",
+          "gender": "Male",
+          "age": 23
+        },
+        {
+          "personId": 2,
+          "name": "Jennifer",
+          "gender": "Female",
+          "age": 18
+        }
+      ]
+    },
+    {
+      "petId": 4,
+      "name": "Jim",
+      "petType": "Cat",
+      "people": [
+        {
+          "personId": 4,
+          "name": "Fred",
+          "gender": "Male",
+          "age": 40
+        }
+      ]
+    },
+    {
+      "petId": 3,
+      "name": "Max",
+      "petType": "Cat",
+      "people": [
+        {
+          "personId": 4,
+          "name": "Fred",
+          "gender": "Male",
+          "age": 40
+        }
+      ]
+    },
+    {
+      "petId": 8,
+      "name": "Sam",
+      "petType": "Dog",
+      "people": [
+        {
+          "personId": 4,
+          "name": "Fred",
+          "gender": "Male",
+          "age": 40
+        }
+      ]
+    },
+    {
+      "petId": 2,
+      "name": "Tom",
+      "petType": "Cat",
+      "people": [
+        {
+          "personId": 4,
+          "name": "Fred",
+          "gender": "Male",
+          "age": 40
+        }
+      ]
+    }
+  ],
+  "petsFromFemaleOwner": [
+    {
+      "petId": 1,
+      "name": "Garfield",
+      "petType": "Cat",
+      "people": [
+        {
+          "personId": 1,
+          "name": "Bob",
+          "gender": "Male",
+          "age": 23
+        },
+        {
+          "personId": 2,
+          "name": "Jennifer",
+          "gender": "Female",
+          "age": 18
+        }
+      ]
+    },
+    {
+      "petId": 9,
+      "name": "Nemo",
+      "petType": "Fish",
+      "people": [
+        {
+          "personId": 6,
+          "name": "Alice",
+          "gender": "Female",
+          "age": 64
+        }
+      ]
+    },
+    {
+      "petId": 6,
+      "name": "Simba",
+      "petType": "Cat",
+      "people": [
+        {
+          "personId": 6,
+          "name": "Alice",
+          "gender": "Female",
+          "age": 64
+        }
+      ]
+    },
+    {
+      "petId": 5,
+      "name": "Tabby",
+      "petType": "Cat",
+      "people": [
+        {
+          "personId": 5,
+          "name": "Samantha",
+          "gender": "Female",
+          "age": 40
+        }
+      ]
+    }
+  ]
+}

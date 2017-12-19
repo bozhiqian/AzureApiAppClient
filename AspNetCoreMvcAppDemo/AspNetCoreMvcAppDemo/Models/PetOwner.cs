@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using People.Data.Entities;
+using People.Data.Enum;
+using People.Data.ViewModel;
 
 namespace AspNetCoreMvcAppDemo.Models
 {
@@ -11,7 +14,7 @@ namespace AspNetCoreMvcAppDemo.Models
         public string Name { get; set; }
         public Gender Gender { get; set; }
         public int Age { get; set; }
-        public List<Pet> Pets { get; set; }
+        public List<PetViewModel> Pets { get; set; }
 
     }
 }

@@ -1,29 +1,4 @@
-# Author: Bozhi Qian
-
-## An ASP.NET Core MVC and Web Api Demo - Get pets grouped by owner's gender
-
-A json web service has been set up at the url: http://agl-developer-test.azurewebsites.net/people.json
-
-And another people api is imeplemented at http://peopleapi2017.azurewebsites.net/swagger
-
-### An ASP.NET Core 2.0 MVC front end is deployed to Azure App Service as Azure Web App.
-
-http://aspnetcoremvcappdemo.azurewebsites.net/
-
-## ASP.NET Core Middlewares to be used
-
-* **Marvin.HttpCache** https://github.com/KevinDockx/HttpCache
-* **AutoMapper** https://github.com/AutoMapper/AutoMapper
-* **EntityFrameworkCore** https://github.com/aspnet/EntityFrameworkCore
-* **AspNetCoreRateLimit** https://github.com/stefanprodan/AspNetCoreRateLimit
-* **Moq** https://github.com/moq/moq4 
-* **NLog.Web** https://github.com/NLog/NLog.Web
-* **XUnit** https://github.com/xunit/xunit
-* **Swashbuckle.AspNetCore** https://github.com/domaindrivendev/Swashbuckle.AspNetCore
- 
-### people.json
-
-[
+﻿[
   {
     "name": "Bob",
     "gender": "Male",
@@ -106,8 +81,3 @@ http://aspnetcoremvcappdemo.azurewebsites.net/
     ]
   }
 ]
-
-### Source code
-Please use latest VS2017 to open solution.
-### Deployed site on Azure
-http://aspnetcoremvcappdemo.azurewebsites.net/

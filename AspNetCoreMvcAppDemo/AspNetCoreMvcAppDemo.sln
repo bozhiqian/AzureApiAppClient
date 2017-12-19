@@ -1,11 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.0
+VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCoreMvcAppDemo", "AspNetCoreMvcAppDemo\AspNetCoreMvcAppDemo.csproj", "{30505A3D-37E2-4D33-B4AB-63F9E192F1E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoreMvcAppDemo", "AspNetCoreMvcAppDemo\AspNetCoreMvcAppDemo.csproj", "{30505A3D-37E2-4D33-B4AB-63F9E192F1E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCoreMvcAppDemo.Test", "AspNetCoreMvcAppDemo.Test\AspNetCoreMvcAppDemo.Test.csproj", "{20AC81D1-0677-4E4F-8D9C-36DAEBF61849}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoreMvcAppDemo.Test", "AspNetCoreMvcAppDemo.Test\AspNetCoreMvcAppDemo.Test.csproj", "{20AC81D1-0677-4E4F-8D9C-36DAEBF61849}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "People.API", "People.API\People.API.csproj", "{B58D7933-0340-4639-9B7C-EE69C2F1EC0D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "People.Data", "People.Data\People.Data.csproj", "{7A3691FA-51EF-4194-8B3A-C07B2ACD35BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "People.API.Test", "People.API.Test\People.API.Test.csproj", "{18FD3D78-A4B8-41B0-8414-1C82F186F7F0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +27,18 @@ Global
 		{20AC81D1-0677-4E4F-8D9C-36DAEBF61849}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20AC81D1-0677-4E4F-8D9C-36DAEBF61849}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20AC81D1-0677-4E4F-8D9C-36DAEBF61849}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B58D7933-0340-4639-9B7C-EE69C2F1EC0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B58D7933-0340-4639-9B7C-EE69C2F1EC0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B58D7933-0340-4639-9B7C-EE69C2F1EC0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B58D7933-0340-4639-9B7C-EE69C2F1EC0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A3691FA-51EF-4194-8B3A-C07B2ACD35BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A3691FA-51EF-4194-8B3A-C07B2ACD35BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A3691FA-51EF-4194-8B3A-C07B2ACD35BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A3691FA-51EF-4194-8B3A-C07B2ACD35BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18FD3D78-A4B8-41B0-8414-1C82F186F7F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18FD3D78-A4B8-41B0-8414-1C82F186F7F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18FD3D78-A4B8-41B0-8414-1C82F186F7F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18FD3D78-A4B8-41B0-8414-1C82F186F7F0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
