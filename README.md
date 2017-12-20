@@ -109,5 +109,9 @@ http://aspnetcoremvcappdemo.azurewebsites.net/
 
 ### Source code
 Please use latest VS2017 to open solution.
+
+### Build Status from VSTS
+[<img src="https://xps15.visualstudio.com/_apis/public/build/definitions/858197f8-7447-40b4-af5e-4ffd829dee43/2/badge"/>](https://xps15.visualstudio.com/GithubDemo/_build/index?definitionId={858197f8-7447-40b4-af5e-4ffd829dee43})
+
 ### Deployed site on Azure
 http://aspnetcoremvcappdemo.azurewebsites.net/
