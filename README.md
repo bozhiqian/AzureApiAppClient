@@ -34,11 +34,10 @@ Please use latest VS2017 to open solution.
 [<img src="https://xps15.visualstudio.com/_apis/public/build/definitions/a051525a-3100-4942-9cb7-c141c7be301c/3/badge"/>](https://xps15.visualstudio.com/Pets/_build/index?definitionId=a051525a-3100-4942-9cb7-c141c7be301c) Commit changes to GitHub and automatically deploy to Azure
 
 ### Build configuration on VSTS
-![Screenshot of the build definition from VSTS for the "Pet" project. ](file:///C:\Users\bozhi\Pictures\pets-vsts-build.png)
+![Screenshot of the build definition from VSTS for the "Pet" project. ](pets-vsts-build.png)
 
 ### Azure DevOps project
-![Screenshot of the Azure DevOps project](file:///C:\Users\bozhi\Pictures\azure-devops-project.png)
-
+![Screenshot of the Azure DevOps project](azure-devops-project.png)
 ### Reference: 
 people.json
 
