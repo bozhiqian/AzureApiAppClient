@@ -10,7 +10,7 @@ using People.Data.Enum;
 using People.Data.Services;
 using People.Data.ViewModel;
 
-namespace AspNetCoreMvcAppDemo.Controllers
+namespace AspnetCoreMvcClientDemo.Controllers
 {
     public class HomeController : Controller
     {
