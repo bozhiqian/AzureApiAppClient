@@ -1,0 +1,49 @@
+﻿@model People.Data.ViewModel.PetsViewModels
+@{
+    ViewData["Title"] = "AGL Developer coding test - Get pets";
+}
+
+<h2>An ASP.NET Core MVC Demo - Get pets grouped by owner's gender</h2>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                A List of Pets grouped by owner's gender.
+            </div>
+            <div class="panel-body">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="h4">Male</div>
+                        <ul>
+                            @foreach(var pet in Model.PetsViewModelAgl.PetsFromMaleOwner)
+                            {
+                                <li>@pet.Name</li>
+                            }
+                        </ul>
+                    </div>
+                    <div class="row">
+                        <div class="h4">Female</div>
+                        <ul>
+                            @foreach(var pet in Model.PetsViewModelAgl.PetsFromFemaleOwner)
+                            {
+                                <li>@pet.Name</li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p class="badge">API Url: </p>
+                        <a class="navbar-link arrow" href="@Model.AglJsonUrl.AbsoluteUri" target="_blank">
+                            
+                            @Model.AglJsonUrl.AbsoluteUri
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
