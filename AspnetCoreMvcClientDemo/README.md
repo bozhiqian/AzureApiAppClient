@@ -3,7 +3,7 @@
 ## An ASP.NET Core 2.1 MVC Demo - Get pets grouped by owner's gender
 
 ### Screenshots
-![](screenshot.jpg)
+![Screenshot](screenshot.jpg)
 
 ### Programming challenge
 A json web service has been set up at the url: http://agl-developer-test.azurewebsites.net/people.json
