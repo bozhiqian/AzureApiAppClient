@@ -35,16 +35,15 @@ namespace AspNetCoreMvcAppDemo
             if(env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseBrowserLink();
+                loggerFactory.AddDebug();
             }
             else
             {
                 app.UseExceptionHandler("/Home/Error");
             }
 
+            app.UseHttpsRedirection();
             app.UseStaticFiles();
-
-            loggerFactory.AddDebug();
 
             app.UseMvc(routes =>
             {

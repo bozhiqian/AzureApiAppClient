@@ -39,7 +39,7 @@ namespace People.API
             });
 
             services.AddAutoMapper();
-            
+
 
             services.AddTransient<PeopleSeeder>();
             services.AddScoped<IPeopleRepository, PeopleRepository>();
@@ -47,7 +47,7 @@ namespace People.API
                     {
                         setupAction.ReturnHttpNotAcceptable = true;
                         setupAction.OutputFormatters.Add(new XmlDataContractSerializerOutputFormatter()); // Support XML too.
-                        setupAction.InputFormatters.Add(new XmlDataContractSerializerInputFormatter());
+                        setupAction.InputFormatters.Add(new XmlDataContractSerializerInputFormatter(setupAction));
                     })
                     .AddJsonOptions(options =>
                     {
@@ -59,14 +59,14 @@ namespace People.API
             services.AddSwaggerGen(options =>
             {
                 options.SwaggerDoc("v1", new Info
-                                         {
-                                             Version = "v1",
-                                             Title = "ASP.NET Core Web API demo",
-                                             Description = "Demonstration of ASP.NET Core 2.0 Web API and some of its middleware.",
-                                             TermsOfService = "None",
-                                             Contact = new Contact { Name = "Bozhi Qian", Url = "https://twitter.com/bozhiqian" },
-                                             License = new License { Name = "MIT", Url = "https://en.wikipedia.org/wiki/MIT_License" }
-                                         });
+                {
+                    Version = "v1",
+                    Title = "ASP.NET Core Web API demo",
+                    Description = "Demonstration of ASP.NET Core 2.0 Web API and some of its middleware.",
+                    TermsOfService = "None",
+                    Contact = new Contact { Name = "Bozhi Qian", Url = "https://twitter.com/bozhiqian" },
+                    License = new License { Name = "MIT", Url = "https://en.wikipedia.org/wiki/MIT_License" }
+                });
 
                 //Add XML comment document by uncommenting the following
                 // var filePath = Path.Combine(PlatformServices.Default.Application.ApplicationBasePath, "MyApi.xml");
@@ -78,16 +78,16 @@ namespace People.API
             services.AddResponseCaching();
 
             // https://github.com/KevinDockx/HttpCache
-            services.AddHttpCacheHeaders(
-                expirationModelOptions=>
-                {
-                    expirationModelOptions.MaxAge = 60;
-                },
-                validationModelOptions=>
-                {
-                    validationModelOptions.AddMustRevalidate = true;
-                    validationModelOptions.VaryByAll = true;
-                });
+            //services.AddHttpCacheHeaders(
+            //    expirationModelOptions =>
+            //    {
+            //        expirationModelOptions.MaxAge = 60;
+            //    },
+            //    validationModelOptions =>
+            //    {
+            //        validationModelOptions.AddMustRevalidate = true;
+            //        validationModelOptions.VaryByAll = true;
+            //    });
 
             #region Rate Litmit -- https://github.com/stefanprodan/AspNetCoreRateLimit
 
@@ -128,17 +128,17 @@ namespace People.API
             // loggerFactory.AddNLog(); // this is for ASP.NET Core 1.*, for ASP.NET Core 2.0, it is in "Program.cs". 
 
             // Seed the database
-            using(var scope = app.ApplicationServices.CreateScope())
+            using (var scope = app.ApplicationServices.CreateScope())
             {
                 var seeder = scope.ServiceProvider.GetService<PeopleSeeder>();
                 seeder.Seed();
             }
 
-            if(env.IsDevelopment())
+            if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
 
-                
+
             }
             else
             {
@@ -147,7 +147,7 @@ namespace People.API
                     appBuilder.Run(async context =>
                     {
                         var exceptionHandlerFeature = context.Features.Get<IExceptionHandlerFeature>();
-                        if(exceptionHandlerFeature != null)
+                        if (exceptionHandlerFeature != null)
                         {
                             var logger = loggerFactory.CreateLogger("Global exception logger");
                             logger.LogError(500,
@@ -180,9 +180,6 @@ namespace People.API
 
             // Shared caches (.NET Core) - ASP.NET Core 2.0 ResponseCaching middleware.
             app.UseResponseCaching(); // this should be before "app.UseHttpCacheHeaders();"
-
-            // https://github.com/KevinDockx/HttpCache
-            app.UseHttpCacheHeaders();
 
             app.UseMvc();
 
