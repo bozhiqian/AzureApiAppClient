@@ -7,10 +7,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using People.Data.Enum;
+using People.Data.Model;
 using People.Data.Services;
 using People.Data.ViewModel;
 
-namespace AspnetCoreMvcClientDemo.Controllers
+namespace PeopleDemo.Controllers
 {
     public class HomeController : Controller
     {
@@ -23,22 +24,21 @@ namespace AspnetCoreMvcClientDemo.Controllers
             _configuration = configuration;
             _logger = logger;
             _petsRepository = petsRepository;
+            _petsRepository.RequestUri = _configuration["API:RequestUri"]; // "people.json"
         }
 
         public async Task<IActionResult> Index()
         {
             #region Call AGL JSON Web service 
-            var baseUrl = _configuration["API:BaseUrl"]; // "http://agl-developer-test.azurewebsites.net/"
-            var requestUri = _configuration["API:RequestUri"]; // "people.json"
 
-            var petsViewModelFromAgl = await GetPetsViewModelFromAglAsync(baseUrl, requestUri);
+            var petsViewModelFromAgl = await GetPetsViewModelFromAglAsync();
 
             #endregion
 
             return View(new PetsViewModels
             {
                 PetsViewModelAgl = petsViewModelFromAgl,
-                AglJsonUrl = new Uri(baseUrl + requestUri),
+                AglJsonUrl = new Uri(_petsRepository.BaseAddress + _petsRepository.RequestUri),
             });
         }
 
@@ -61,32 +61,36 @@ namespace AspnetCoreMvcClientDemo.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        private async Task<PetsViewModel> GetPetsViewModelFromAglAsync(string baseUrl, string requestUri)
+        private async Task<PetsViewModel> GetPetsViewModelFromAglAsync()
         {
             #region Call AGL JSON Web service 
 
-            try
-            {
-                var petOwners = await _petsRepository.GetPetOwnerAsync(baseUrl, requestUri);
-                var petsFromMaleOwners = petOwners.Where(p => p.Gender == Gender.Male && p.Pets != null)
-                                                  .SelectMany(p => p.Pets).OrderBy(p => p.Name)
-                                                  .Select(p => new PetViewModel { Name = p.Name, Type = p.Type.ToString() }).ToList();
-                var petsFromFemaleOwners = petOwners.Where(p => p.Gender == Gender.Female).SelectMany(p => p.Pets)
-                                                    .OrderBy(p => p.Name)
-                                                    .Select(p => new PetViewModel { Name = p.Name, Type = p.Type.ToString() }).ToList();
-                var petsViewModel = new PetsViewModel
-                {
-                    PetsFromMaleOwner = petsFromMaleOwners,
-                    PetsFromFemaleOwner = petsFromFemaleOwners
-                };
+            var petOwnersViewModel = await _petsRepository.GetPetOwnerAsync();
 
-                return petsViewModel;
-            }
-            catch(Exception ex)
+            if (petOwnersViewModel.Exception != null)
             {
-                _logger?.LogError(ex.ToString());
-                throw ex;
+                _logger?.LogError(petOwnersViewModel.Exception.ToString());
+                throw petOwnersViewModel.Exception;
             }
+
+            var petOwners = petOwnersViewModel.PetOwners;
+
+            var petsFromMaleOwners = petOwners.Where(p => p.Gender == Gender.Male && p.Pets != null)
+                .SelectMany(p => p.Pets).OrderBy(p => p.Name)
+                .Select(p => new Pet { Name = p.Name, Type = p.Type.ToString() }).ToList();
+            var petsFromFemaleOwners = petOwners.Where(p => p.Gender == Gender.Female).SelectMany(p => p.Pets)
+                .OrderBy(p => p.Name)
+                .Select(p => new Pet { Name = p.Name, Type = p.Type.ToString() }).ToList();
+
+            var petsViewModel = new PetsViewModel
+            {
+                PetsFromMaleOwner = petsFromMaleOwners,
+                PetsFromFemaleOwner = petsFromFemaleOwners,
+                StatusCode = petOwnersViewModel.StatusCode
+            };
+
+            return petsViewModel;
+
             #endregion
         }
 

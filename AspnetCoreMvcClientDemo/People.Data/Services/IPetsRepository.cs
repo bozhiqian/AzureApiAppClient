@@ -7,7 +7,8 @@ namespace People.Data.Services
 {
     public interface IPetsRepository
     {
-        Task<List<PetOwner>> GetPetOwnerAsync(string baseUrl, string requestUri);
-        Task<PetsViewModel> GetPetsAsync(string baseUrl, string requestUri);
+        Task<PetOwnersViewModel> GetPetOwnerAsync();
+        string RequestUri { get; set; }
+        string BaseAddress { get; }
     }
 }

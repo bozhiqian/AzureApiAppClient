@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -10,7 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using People.Data.Services;
 
-namespace AspnetCoreMvcClientDemo
+namespace PeopleDemo
 {
     public class Startup
     {
@@ -31,6 +30,17 @@ namespace AspnetCoreMvcClientDemo
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.AddScoped<HttpClient>(c =>
+            {
+                var client = new HttpClient()
+                {
+                    BaseAddress = new Uri(Configuration["API:BaseUrl"]), // "http://agl-developer-test.azurewebsites.net/"
+                };
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                return client;
+            });
             services.AddScoped<IPetsRepository, PetsRepository>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);

@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
-
-namespace People.Data.ViewModel
+﻿namespace People.Data.Model
 {
-    public class PetViewModel
+    public class Pet
     {
         public string Name { get; set; }
 

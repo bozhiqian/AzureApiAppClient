@@ -11,53 +11,52 @@ namespace People.Data.Services
 {
     public class PetsRepository : IPetsRepository
     {
-        public PetsRepository()
+        private readonly HttpClient _httpClient;
+        public PetsRepository(HttpClient httpClient)
         {
-
+            _httpClient = httpClient;
         }
+
+        public string RequestUri { get; set; }
+        public string BaseAddress => _httpClient.BaseAddress.ToString(); 
+
 
         // Used to call AGL json web service http://agl-developer-test.azurewebsites.net/people.json
-        public async Task<List<PetOwner>> GetPetOwnerAsync(string baseUrl, string requestUri)
+        public async Task<PetOwnersViewModel> GetPetOwnerAsync()
         {
-            var json = await Request(baseUrl, requestUri);
-            if(!string.IsNullOrEmpty(json))
-            {
-                var petOwners = JsonConvert.DeserializeObject<List<PetOwner>>(json);
-                return petOwners;
-            }
-            return null;
-        }
+            var petOwnersViewModel = new PetOwnersViewModel();
 
-        // Used to call People WebAPI http://localhost:51888/api/Pets?includePerson=true
-        public async Task<PetsViewModel> GetPetsAsync(string baseUrl, string requestUri)
-        {
-            var json = await Request(baseUrl, requestUri);
-            if(!string.IsNullOrEmpty(json))
+            //GET Method
+            try
             {
-                var pets = JsonConvert.DeserializeObject<PetsViewModel>(json);
-                return pets;
-            }
-            return null;
-        }
+                HttpResponseMessage response = await _httpClient.GetAsync(RequestUri);
+                petOwnersViewModel.StatusCode = response.StatusCode;
 
-        public async Task<string> Request(string baseUrl, string requestUri)
-        {
-            using(var client = new HttpClient())
-            {
-                client.BaseAddress = new Uri(baseUrl);
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-                //GET Method
-                HttpResponseMessage response = await client.GetAsync(requestUri);
-                if(response.IsSuccessStatusCode)
+                if (response.IsSuccessStatusCode)
                 {
                     var json = await response.Content.ReadAsStringAsync();
+                    var petOwners = JsonConvert.DeserializeObject<List<PetOwner>>(json);
 
-                    return json;
+                    petOwnersViewModel.PetOwners = petOwners;
                 }
-                return null;
+                else
+                {
+                    petOwnersViewModel.PetOwners = new List<PetOwner>();
+                }
+
             }
+            catch (HttpRequestException ex)
+            {
+                petOwnersViewModel.Exception = ex;
+            }
+            catch (Exception ex)
+            {
+                petOwnersViewModel.Exception = ex;
+            }
+
+            return petOwnersViewModel;
         }
+
+        
     }
 }
